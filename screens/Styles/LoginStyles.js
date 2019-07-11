@@ -36,12 +36,16 @@ export default StyleSheet.create({
     paddingHorizontal: 16
   },
   title: {
-    flexDirection: 'row',
     marginBottom: 16
   },
   titleText: {
     fontSize: 24,
     letterSpacing: -0.75
+  },
+  subtitleText: {
+    fontSize: 16,
+    letterSpacing: -0.50,
+    marginTop: 8
   },
   inputBox: {
     height: 49,
@@ -79,7 +83,7 @@ export default StyleSheet.create({
     flex: 1,
     textAlign: 'center',
     fontSize: 14,
-    color: 'rgb(225,225,225)',
+    color: 'rgb(255,255,255)',
     letterSpacing: -0.44
   }
 });

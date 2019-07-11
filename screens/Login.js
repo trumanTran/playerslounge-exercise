@@ -4,7 +4,6 @@ import {
   Button,
   Image,
   SafeAreaView,
-  TouchableWithoutFeedback,
   Text,
   TextInput,
   TouchableOpacity,
@@ -48,11 +47,11 @@ const Login = ({ navigation }) => {
               />
             </View>
             <View style={styles.rightContainer}>
-              <TouchableWithoutFeedback>
+              <TouchableOpacity>
                 <Text style={[styles.signup, { fontFamily: 'lato-regular' }]}>
                   Sign up
                 </Text>
-              </TouchableWithoutFeedback>
+              </TouchableOpacity>
             </View>
           </View>
           <View style={styles.body}>
@@ -120,14 +119,15 @@ const Login = ({ navigation }) => {
                 </View>
               </TouchableOpacity>
             </View>
-            <TouchableWithoutFeedback
+            <TouchableOpacity
               style={styles.forgot}
               onPress={() => navigation.navigate('ForgotPassword')}
+              hitSlop={{top: 20, bottom: 20, left: 16, right: 50}}
             >
               <Text style={[styles.signup, { fontFamily: 'lato-regular' }]}>
                 Forgot password
               </Text>
-            </TouchableWithoutFeedback>
+            </TouchableOpacity>
           </View>
           <FooterImage />
         </View>

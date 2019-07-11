@@ -7,11 +7,11 @@ import ForgotPassword from '../screens/ForgotPassword';
 const AuthStack = createStackNavigator({
   Login: {
     screen: Login,
-    navigationOptions: { title: 'LOGIN' }
+    navigationOptions: { header: null }
   },
   ForgotPassword: {
     screen: ForgotPassword,
-    navigationOptions: { title: 'FORGOT PASSWORD' }
+    navigationOptions: { header: null }
   }
 });
 

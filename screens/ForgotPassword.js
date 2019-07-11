@@ -1,22 +1,16 @@
 import React from 'react';
-import { Button, StyleSheet, View } from 'react-native';
+import { Button, View } from 'react-native';
 
-export default function ForgotPassword(props) {
-  _login = async () => {
-    props.navigation.navigate('Login');
-  };
+import FooterImage from '../components/FooterImage';
+import styles from './Styles/LoginStyles';
 
+const ForgotPassword = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Button title="BACK!!" onPress={_login} />
+      <Button title="BACK!!" onPress={() => navigation.navigate('Login')} />
+      <FooterImage />
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-});
+export default ForgotPassword;

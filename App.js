@@ -3,13 +3,13 @@ import { StyleSheet, View } from 'react-native';
 
 import AppNavigator from './navigation/AppNavigator';
 
-export default function App() {
+const App = () => {
   return (
     <View style={styles.container}>
       <AppNavigator />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -17,3 +17,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   }
 });
+
+export default App;

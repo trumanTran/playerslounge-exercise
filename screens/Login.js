@@ -1,22 +1,42 @@
 import React from 'react';
-import { Button, StyleSheet, View } from 'react-native';
+import {
+  Button,
+  Image,
+  SafeAreaView,
+  TouchableWithoutFeedback,
+  Text,
+  View
+} from 'react-native';
 
-export default function Login(props) {
-  _signInAsync = async () => {
-    props.navigation.navigate('ForgotPassword');
-  };
+import FooterImage from '../components/FooterImage';
+import styles from './Styles/LoginStyles';
 
+const Login = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <Button title="Sign in!" onPress={_signInAsync} />
-    </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <View style={styles.leftContainer}>
+            <Image
+              resizeMode="contain"
+              style={styles.logo}
+              source={require('../assets/icons/playersLoungeLogoDark.png')}
+            />
+          </View>
+          <View style={styles.rightContainer}>
+            <TouchableWithoutFeedback>
+              <Text style={styles.signup}>Signup</Text>
+            </TouchableWithoutFeedback>
+          </View>
+        </View>
+        <Button
+          title="Sign in!"
+          onPress={() => navigation.navigate('ForgotPassword')}
+        />
+        <FooterImage />
+      </View>
+    </SafeAreaView>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-});
+export default Login;

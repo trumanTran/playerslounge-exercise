@@ -51,15 +51,40 @@ export default StyleSheet.create({
     height: 49,
     borderWidth: 1,
     borderRadius: 4,
-    borderColor: 'rgb(225,225,225)',
     marginBottom: 24,
     paddingHorizontal: 16,
     paddingTop: 8,
     paddingBottom: 10
   },
+  inputBoxFocused: {
+    borderColor: 'rgb(47,155,216)'
+  },
+  inputBoxBlurred: {
+    borderColor: 'rgb(225,225,225)'
+  },
+  inputBoxError: {
+    borderColor: 'rgb(216,47,75)'
+  },
   inputHeader: {
     fontSize: 10,
-    marginBottom: 2
+    marginBottom: 2,
+    letterSpacing: -0.31
+  },
+  inputHeaderFocused: {
+    color: 'rgb(47,155,216)'
+  },
+  inputHeaderBlurred: {
+    color: 'rgb(0,0,0)'
+  },
+  inputHeaderError: {
+    color: 'rgb(216,47,75)'
+  },
+  errorMessage: {
+    fontSize: 10,
+    color: 'rgb(216,47,75)',
+    letterSpacing: -0.31,
+    marginTop: -22,
+    marginBottom: 10
   },
   textInput: {
     height: 17

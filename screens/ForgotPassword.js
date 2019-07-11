@@ -14,11 +14,13 @@ import {
 import FooterImage from '../components/FooterImage';
 import styles from './Styles/LoginStyles';
 
+import { emails } from '../assets/misc/emails'; // hardcoded emails to test
+
 const ForgotPassword = ({ navigation }) => {
-  // check whether font has loaded
-  const [fontLoaded, setFontLoaded] = useState(false);
-  // email
-  const [email, setEmail] = useState('');
+  const [fontLoaded, setFontLoaded] = useState(false); // state to check whether font has loaded
+  const [email, setEmail] = useState(''); // state for email
+  const [emailFocused, setEmailFocus] = useState(false); // state to check whether email input is onFocus
+  const [emailError, setEmailError] = useState(false); // state check to see if there's error finding email
 
   useEffect(() => {
     // Load fonts
@@ -32,6 +34,26 @@ const ForgotPassword = ({ navigation }) => {
 
     loadFont();
   });
+
+  onChangeHandler = (text) => {
+    setEmailError(false);
+    setEmail(text);
+  }
+
+  // Iterate through array of emails. If email exists, return true. Else return false and setEmailError to true
+  sendResetLink = () => {
+    let found = false;
+    for(let elem of emails) {
+      if(elem === email){
+        console.log("Success!");
+        found = true;
+        break;
+      }
+    }
+    if(!found) {
+      setEmailError(true);
+    }
+  }
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -57,9 +79,9 @@ const ForgotPassword = ({ navigation }) => {
               </Text>
             </View>
             <View style={styles.inputContainer}>
-              <View style={styles.inputBox}>
+              <View style={[styles.inputBox, emailError ? styles.inputBoxError : (emailFocused ? styles.inputBoxFocused : styles.inputBoxBlurred)]}>
                 <Text
-                  style={[styles.inputHeader, { fontFamily: 'lato-regular' }]}
+                  style={[styles.inputHeader, emailError ? styles.inputHeaderError : (emailFocused ? styles.inputHeaderFocused : styles.inputHeaderBlurred), { fontFamily: 'lato-regular' }]}
                 >
                   Email address
                 </Text>
@@ -70,13 +92,19 @@ const ForgotPassword = ({ navigation }) => {
                   returnKeyType="go"
                   autoCapitalize="none"
                   autoCorrect={false}
-                  onChangeText={text => setEmail(text)}
+                  onFocus={() => setEmailFocus(true)}
+                  onBlur={() => setEmailFocus(false)}
+                  onChangeText={text => onChangeHandler(text)}
                   underlineColorAndroid="transparent"
                 />
               </View>
+              {emailError ? (<Text style={[styles.errorMessage, { fontFamily: 'lato-regular' }]}>Sorry, we didn't recognize that email address</Text>) : null}
             </View>
             <View style={styles.buttonContainer}>
-              <TouchableOpacity style={styles.button}>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => sendResetLink()}
+              >
                 <View style={styles.loginButton}>
                   <Text style={[styles.loginText, { fontFamily: 'lato-bold' }]}>
                     Send password reset link

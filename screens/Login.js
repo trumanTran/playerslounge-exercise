@@ -14,12 +14,12 @@ import FooterImage from '../components/FooterImage';
 import styles from './Styles/LoginStyles';
 
 const Login = ({ navigation }) => {
-  // check whether font has loaded
-  const [fontLoaded, setFontLoaded] = useState(false);
-  // email
-  const [email, setEmail] = useState('');
-  // password
-  const [password, setPassword] = useState('');
+  const [fontLoaded, setFontLoaded] = useState(false); // state to check whether font has loaded
+  const [email, setEmail] = useState(''); // state for email
+  const [emailFocused, setEmailFocus] = useState(false); // state to check whether email input is onFocus
+  const [password, setPassword] = useState(''); // state for password
+  const [passwordFocused, setPasswordFocus] = useState(false); // state to check whether pw input is onFocus
+
 
   useEffect(() => {
     // Load fonts
@@ -61,9 +61,9 @@ const Login = ({ navigation }) => {
               </Text>
             </View>
             <View style={styles.inputContainer}>
-              <View style={styles.inputBox}>
+              <View style={[styles.inputBox, emailFocused ? styles.inputBoxFocused : styles.inputBoxBlurred]}>
                 <Text
-                  style={[styles.inputHeader, { fontFamily: 'lato-regular' }]}
+                  style={[styles.inputHeader, emailFocused ? styles.inputHeaderFocused : styles.inputHeaderBlurred,  { fontFamily: 'lato-regular' }]}
                 >
                   Email address
                 </Text>
@@ -74,13 +74,15 @@ const Login = ({ navigation }) => {
                   returnKeyType="go"
                   autoCapitalize="none"
                   autoCorrect={false}
+                  onFocus={() => setEmailFocus(true)}
+                  onBlur={() => setEmailFocus(false)}
                   onChangeText={text => setEmail(text)}
                   underlineColorAndroid="transparent"
                 />
               </View>
-              <View style={styles.inputBox}>
+              <View style={[styles.inputBox, passwordFocused ? styles.inputBoxFocused : styles.inputBoxBlurred]}>
                 <Text
-                  style={[styles.inputHeader, { fontFamily: 'lato-regular' }]}
+                  style={[styles.inputHeader, passwordFocused ? styles.inputHeaderFocused : styles.inputHeaderBlurred, { fontFamily: 'lato-regular' }]}
                 >
                   Password
                 </Text>
@@ -92,6 +94,8 @@ const Login = ({ navigation }) => {
                   autoCapitalize="none"
                   autoCorrect={false}
                   secureTextEntry
+                  onFocus={() => setPasswordFocus(true)}
+                  onBlur={() => setPasswordFocus(false)}
                   onChangeText={text => setPassword(text)}
                   underlineColorAndroid="transparent"
                 />

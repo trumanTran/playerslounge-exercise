@@ -20,7 +20,6 @@ const Login = ({ navigation }) => {
   const [password, setPassword] = useState(''); // state for password
   const [passwordFocused, setPasswordFocus] = useState(false); // state to check whether pw input is onFocus
 
-
   useEffect(() => {
     // Load fonts
     async function loadFont() {
@@ -61,9 +60,20 @@ const Login = ({ navigation }) => {
               </Text>
             </View>
             <View style={styles.inputContainer}>
-              <View style={[styles.inputBox, emailFocused ? styles.inputBoxFocused : styles.inputBoxBlurred]}>
+              <View
+                style={[
+                  styles.inputBox,
+                  emailFocused ? styles.inputBoxFocused : styles.inputBoxBlurred
+                ]}
+              >
                 <Text
-                  style={[styles.inputHeader, emailFocused ? styles.inputHeaderFocused : styles.inputHeaderBlurred,  { fontFamily: 'lato-regular' }]}
+                  style={[
+                    styles.inputHeader,
+                    emailFocused
+                      ? styles.inputHeaderFocused
+                      : styles.inputHeaderBlurred,
+                    { fontFamily: 'lato-regular' }
+                  ]}
                 >
                   Email address
                 </Text>
@@ -80,9 +90,22 @@ const Login = ({ navigation }) => {
                   underlineColorAndroid="transparent"
                 />
               </View>
-              <View style={[styles.inputBox, passwordFocused ? styles.inputBoxFocused : styles.inputBoxBlurred]}>
+              <View
+                style={[
+                  styles.inputBox,
+                  passwordFocused
+                    ? styles.inputBoxFocused
+                    : styles.inputBoxBlurred
+                ]}
+              >
                 <Text
-                  style={[styles.inputHeader, passwordFocused ? styles.inputHeaderFocused : styles.inputHeaderBlurred, { fontFamily: 'lato-regular' }]}
+                  style={[
+                    styles.inputHeader,
+                    passwordFocused
+                      ? styles.inputHeaderFocused
+                      : styles.inputHeaderBlurred,
+                    { fontFamily: 'lato-regular' }
+                  ]}
                 >
                   Password
                 </Text>
@@ -126,7 +149,7 @@ const Login = ({ navigation }) => {
             <TouchableOpacity
               style={styles.forgot}
               onPress={() => navigation.navigate('ForgotPassword')}
-              hitSlop={{top: 20, bottom: 20, left: 16, right: 50}}
+              hitSlop={{ top: 20, bottom: 20, left: 16, right: 50 }}
             >
               <Text style={[styles.signup, { fontFamily: 'lato-regular' }]}>
                 Forgot password

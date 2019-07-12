@@ -35,25 +35,25 @@ const ForgotPassword = ({ navigation }) => {
     loadFont();
   });
 
-  onChangeHandler = (text) => {
+  onChangeHandler = text => {
     setEmailError(false);
     setEmail(text);
-  }
+  };
 
   // Iterate through array of emails. If email exists, return true. Else return false and setEmailError to true
   sendResetLink = () => {
     let found = false;
-    for(let elem of emails) {
-      if(elem === email){
-        console.log("Success!");
+    for (let elem of emails) {
+      if (elem === email.toLowerCase().trim()) {
+        console.log('Success!');
         found = true;
         break;
       }
     }
-    if(!found) {
+    if (!found) {
       setEmailError(true);
     }
-  }
+  };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -63,7 +63,7 @@ const ForgotPassword = ({ navigation }) => {
             <View style={styles.leftContainer}>
               <TouchableOpacity
                 onPress={() => navigation.navigate('Login')}
-                hitSlop={{top: 20, bottom: 20, left: 16, right: 50}}
+                hitSlop={{ top: 20, bottom: 20, left: 16, right: 50 }}
               >
                 <Ionicons name="md-arrow-back" size={16} />
               </TouchableOpacity>
@@ -74,14 +74,33 @@ const ForgotPassword = ({ navigation }) => {
               <Text style={[styles.titleText, { fontFamily: 'lato-bold' }]}>
                 Forgot your password?
               </Text>
-              <Text style={[styles.subtitleText, { fontFamily: 'lato-regular' }]}>
+              <Text
+                style={[styles.subtitleText, { fontFamily: 'lato-regular' }]}
+              >
                 Enter the email address used to sign up
               </Text>
             </View>
             <View style={styles.inputContainer}>
-              <View style={[styles.inputBox, emailError ? styles.inputBoxError : (emailFocused ? styles.inputBoxFocused : styles.inputBoxBlurred)]}>
+              <View
+                style={[
+                  styles.inputBox,
+                  emailError
+                    ? styles.inputBoxError
+                    : emailFocused
+                    ? styles.inputBoxFocused
+                    : styles.inputBoxBlurred
+                ]}
+              >
                 <Text
-                  style={[styles.inputHeader, emailError ? styles.inputHeaderError : (emailFocused ? styles.inputHeaderFocused : styles.inputHeaderBlurred), { fontFamily: 'lato-regular' }]}
+                  style={[
+                    styles.inputHeader,
+                    emailError
+                      ? styles.inputHeaderError
+                      : emailFocused
+                      ? styles.inputHeaderFocused
+                      : styles.inputHeaderBlurred,
+                    { fontFamily: 'lato-regular' }
+                  ]}
                 >
                   Email address
                 </Text>
@@ -98,7 +117,13 @@ const ForgotPassword = ({ navigation }) => {
                   underlineColorAndroid="transparent"
                 />
               </View>
-              {emailError ? (<Text style={[styles.errorMessage, { fontFamily: 'lato-regular' }]}>Sorry, we didn't recognize that email address</Text>) : null}
+              {emailError ? (
+                <Text
+                  style={[styles.errorMessage, { fontFamily: 'lato-regular' }]}
+                >
+                  Sorry, we didn't recognize that email address
+                </Text>
+              ) : null}
             </View>
             <View style={styles.buttonContainer}>
               <TouchableOpacity

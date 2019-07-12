@@ -12,13 +12,9 @@ This project is currently using expo v. 33.0.0. If you are trying to run it on y
 
 ### Installing
 
-After cloning and navigating to the repo, run
+After cloning and navigating to the repo, run `yarn isntall`
 
-```
-yarn install
-```
-
-You can run either `expo start` or `yarn start`
+You can start up the project with either `expo start` or `yarn start`
 
 ## Built With
 
